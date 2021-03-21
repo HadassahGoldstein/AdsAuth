@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30804.86
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdsAuth.Web", "AdsAuth.Web\AdsAuth.Web.csproj", "{F1B8F97F-72B2-449A-9CD1-588F4510FD47}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdsAuth.Data", "AdsAuth.Data\AdsAuth.Data.csproj", "{C077E37D-1E81-42EA-9874-1070529E1AB1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F1B8F97F-72B2-449A-9CD1-588F4510FD47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1B8F97F-72B2-449A-9CD1-588F4510FD47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1B8F97F-72B2-449A-9CD1-588F4510FD47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1B8F97F-72B2-449A-9CD1-588F4510FD47}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C077E37D-1E81-42EA-9874-1070529E1AB1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C077E37D-1E81-42EA-9874-1070529E1AB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C077E37D-1E81-42EA-9874-1070529E1AB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C077E37D-1E81-42EA-9874-1070529E1AB1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D07961EB-B1AD-40D7-88B7-0FFE244A139A}
+	EndGlobalSection
+EndGlobal

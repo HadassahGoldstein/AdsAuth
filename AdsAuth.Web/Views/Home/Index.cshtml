@@ -1,0 +1,25 @@
+﻿@using AdsAuth.Data
+@model HomePageViewModel
+
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        @foreach (Ad a in Model.Ads)
+        {
+            <div class="jumbotron">
+                <h5>Listed by @a.Name</h5>
+                <h5>Listed on @a.Date.ToLongDateString()</h5>
+                <h5>Phone Number: @a.Cell</h5>
+                <h3>Details:</h3>
+                <p>@a.Text </p>
+                @if (Model.UserId==a.UserId)
+                {
+                    <form method="post" action="/Home/Delete">
+                        <button class="btn btn-danger">Delete</button>
+                        <input type="hidden"name="userId" value="@a.UserId" />
+                        <input type="hidden" name="AdId"value="@a.Id" />
+                    </form>
+                }
+            </div>
+        }
+    </div>
+</div>
