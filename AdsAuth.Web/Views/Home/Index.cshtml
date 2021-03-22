@@ -14,8 +14,7 @@
                 @if (Model.UserId==a.UserId)
                 {
                     <form method="post" action="/Home/Delete">
-                        <button class="btn btn-danger">Delete</button>
-                        <input type="hidden"name="userId" value="@a.UserId" />
+                        <button class="btn btn-danger">Delete</button>                        
                         <input type="hidden" name="AdId"value="@a.Id" />
                     </form>
                 }

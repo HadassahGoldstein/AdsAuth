@@ -10,5 +10,6 @@ namespace AdsAuth.Data
         public string Cell { get; set; }
         public DateTime Date { get; set; }
         public string Text { get; set; }
+        public string Title { get; set; }
     }
 }

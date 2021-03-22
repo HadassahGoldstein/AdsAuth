@@ -16,12 +16,13 @@ namespace AdsAuth.Data
         {
             using var connection = new SqlConnection(_connectionString);
             using var command = connection.CreateCommand();
-            command.CommandText = @"SELECT a.*,u.Name FROM Ads a JOIN Users u ON u.Id=a.UserId";
+            command.CommandText = @"SELECT a.*,u.Name FROM Ads a JOIN Users u ON u.Id=a.UserId ";
             if (id > 0)
             {
-                command.CommandText += @"WHERE UserId = @personId";
+                command.CommandText += @"WHERE a.UserId = @personId ";
                 command.Parameters.AddWithValue("@personId", id);
             }
+            command.CommandText += @"ORDER BY a.Date DESC";
             connection.Open();
             var reader = command.ExecuteReader();
             var ads = new List<Ad>();
@@ -87,21 +88,20 @@ namespace AdsAuth.Data
         {
             using var connection = new SqlConnection(_connectionString);
             using var command = connection.CreateCommand();
-            command.CommandText = @"INSERT INTO Ads(UserId,Text,Date,Cell)
-                                    VALUES (@userId,@text,@date,@cell)";
+            command.CommandText = @"INSERT INTO Ads(UserId,Text,Date,Cell,Title)
+                                    VALUES (@userId,@text,GETDATE(),@cell,@title)";
             command.Parameters.AddWithValue("@userId", u.Id);
-            command.Parameters.AddWithValue("@text", a.Text);
-            command.Parameters.AddWithValue("@date", a.Date);
+            command.Parameters.AddWithValue("@text", a.Text);           
             command.Parameters.AddWithValue("@cell", a.Cell);
+            command.Parameters.AddWithValue("@title", a.Title);
             connection.Open();
             command.ExecuteNonQuery();
         }
-        public void DeleteAd(int userId, int adId)
+        public void DeleteAd(int adId)
         {
             using var connection = new SqlConnection(_connectionString);
             using var command = connection.CreateCommand();
-            command.CommandText = @"DELETE FROM Ads WHERE UserId=@userId AND Id=@adId";
-            command.Parameters.AddWithValue("@userId", userId);
+            command.CommandText = @"DELETE FROM Ads WHERE Id=@adId";           
             command.Parameters.AddWithValue("@adId", adId);
             connection.Open();
             command.ExecuteNonQuery();

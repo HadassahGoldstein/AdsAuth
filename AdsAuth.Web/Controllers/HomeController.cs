@@ -9,14 +9,14 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
+
 namespace AdsAuth.Web.Controllers
 {
-    [Authorize]
+    
     public class HomeController : Controller
     {
         private string _connectionString =
-         @"Data Source=.\sqlexpress; Initial Catalog=AdsDB;Integrated Security=true;";
-        [AllowAnonymous]
+         @"Data Source=.\sqlexpress; Initial Catalog=AdsDB;Integrated Security=true;";        
         public IActionResult Index(int id)
         {
             var db = new AdsDB(_connectionString);
@@ -25,36 +25,38 @@ namespace AdsAuth.Web.Controllers
                 Ads= db.GetAds(id)
             };
             if (User.Identity.IsAuthenticated)
-            {                
+            {                               
                 vm.UserId = db.GetByEmail(User.Identity.Name).Id;
             }
             return View(vm);
         }
-
+        [Authorize]
         public IActionResult NewAd()
         {
             return View();
         }
+        [Authorize]
         [HttpPost]
         public IActionResult NewAd(Ad a)
         {
-            var db = new AdsDB(_connectionString);
-            
+            var db = new AdsDB(_connectionString);            
             User u = db.GetByEmail(User.Identity.Name);
             db.AddAd(a, u);
             return Redirect("/");
         }
+        [Authorize]
         public IActionResult MyAcount()
         {
             var db = new AdsDB(_connectionString);
             int currentId = db.GetByEmail(User.Identity.Name).Id;
             return Redirect($"/Home/index?id={currentId}");
         }
+        [Authorize]
         [HttpPost]
-        public IActionResult Delete(int userId, int adId)
+        public IActionResult Delete(int adId)
         {
             var db = new AdsDB(_connectionString);
-            db.DeleteAd(userId, adId);
+            db.DeleteAd(adId);
             return Redirect("/");
         }
 
